@@ -1,13 +1,11 @@
 {% extends 'global/base.html' %}
 
-<title>{% block title %}Mudar | {% endblock title %}</title>
+<title>{% block title %} {{ recipe.title }} | {% endblock title %}</title>
 
 {% block content %}
     <div class="main-content pt-0">
         <div class="main-content-detail d-flex justify-content-center">
-            {% for recipe in recipes %}
             {% include 'recipes/partials/recipe.html' %}           
-        {% endfor %}
         </div>
     </div>
 {% endblock content %}

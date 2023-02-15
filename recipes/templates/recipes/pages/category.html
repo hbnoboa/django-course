@@ -1,14 +1,12 @@
 {% extends 'global/base.html' %}
 
-<title>{% block title %}Home | {% endblock title %}</title>
+<title>{% block title %}{{ title }} {% endblock title %}</title>
 
 {% block content %}
     <div class="main-content pt-0">
         <div class="main-content-list d-grid gap-5">
             {% for recipe in recipes %}
-                {% include 'recipes/partials/recipe.html' %}    
-            {% empty %}    
-                <h1>Sem receitas achadas</h1>   
+                {% include 'recipes/partials/recipe.html' %}           
             {% endfor %}
         </div>
     </div>
