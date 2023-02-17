@@ -1,7 +1,7 @@
-<form action="" class="search-form py-4 mx-auto w-50">
+<form action="{% url 'recipes:search' %}" method="GET" class="search-form py-4 mx-auto w-50">
     <div class="row border border-dark">
         <div class="col">
-            <input type="search" class="search-input form-control bg-transparent border-0" name="search">
+            <input type="search" class="search-input form-control bg-transparent border-0" name="q" value="{{ search_term }}" required>
         </div>
         <div class="col-1">
             <button type="submit" class="search-button btn bg-transparent border-0"><i class="fa-solid fa-magnifying-glass"></i></button>

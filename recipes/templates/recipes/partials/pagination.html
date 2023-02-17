@@ -1,0 +1,17 @@
+<ul class="pagination pt-4">
+    <li class="page-item">
+      <a class="page-link" href="?page={{ previous_page }}{{ additional_url_query }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% for page in pagination_range.pagination  %}
+    <li class="page-item">
+        <a href="?page={{ page }}{{ additional_url_query }}" class="page-link">{{ page }}</a>
+    </li>
+    {% endfor %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ next_page }}{{ additional_url_query }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+</ul>

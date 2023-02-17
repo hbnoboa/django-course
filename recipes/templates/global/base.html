@@ -18,11 +18,9 @@
                 </div>
                 <div class="main-content pt-0">
                     <div class="main-content-list d-grid gap-5">
-                        {% block content %}
-                        
-                        {% endblock content %}
-
+                        {% block content %}{% endblock content %}
                     </div>
+                    {% include 'recipes/partials/pagination.html' %}
                 </div>
             </div>
         </main>

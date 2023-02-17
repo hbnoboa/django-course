@@ -1,6 +1,6 @@
 {% extends 'global/base.html' %}
 
-<title>{% block title %}Home | {% endblock title %}</title>
+<title>{% block title %} {{ page_title }} | {% endblock title %}</title>
 
 {% block content %}
     <div class="main-content pt-0">
@@ -10,7 +10,7 @@
             {% empty %}    
                 <div class="mx-auto">
                     <h1>Sem receitas achadas</h1>   
-                </div
+                </div  
             {% endfor %}
         </div>
     </div>
