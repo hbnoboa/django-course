@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 
 from authors.forms.login_form import LoginForm
+from authors.forms.recipe_form import AuthorRecipeForm
 from authors.forms.register_form import RegisterForm
 from recipes.models import Recipe
 
@@ -94,8 +95,33 @@ def dashboard(request):
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
+def dashboard_recipe_new(request):
+    form = AuthorRecipeForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+    )
+
+    if form.is_valid():
+        recipe = form.save(commit=False)
+
+        recipe.author = request.user
+        recipe.preparation_steps_is_html = False
+        recipe.is_published = False
+
+        recipe.save()
+
+        messages.success(request, 'Receita criada com sucesso')
+
+        return redirect(reverse('authors:dashboard_recipe_new'))
+
+    return render(request, 'authors/pages/dashboard.html', context={
+        'form': form
+    })
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
 def dashboard_recipe_edit(request, id):
-    recipe = Recipe.objects.filter(
+    recipe = Recipe.objects.get(
         is_published=False,
         author=request.user,
         pk=id,
@@ -103,6 +129,25 @@ def dashboard_recipe_edit(request, id):
     if not recipe:
         raise Http404()
 
-    return render(request, 'authors/pages/dashboard_recipe.html', context={
+    form = AuthorRecipeForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+        instance=recipe
+    )
 
+    if form.is_valid():
+        recipe = form.save(commit=False)
+
+        recipe.author = request.user
+        recipe.preparation_steps_is_html = False
+        recipe.is_published = False
+
+        recipe.save()
+
+        messages.success(request, 'Receita editada com sucesso')
+
+        return redirect(reverse('authors:dashboard_recipe_edit', args=(id,)))
+
+    return render(request, 'authors/pages/dashboard_recipe.html', context={
+        'form': form
     })

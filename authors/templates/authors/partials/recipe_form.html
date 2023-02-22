@@ -1,0 +1,109 @@
+<div class="main-content pt-0">
+    <form action="{{ form_action }}" method="POST" enctype="multipart/form-data">
+
+        {% if form.errors %}
+            <div class="row py-1">
+                <div class="col">   
+                    <div class="alert alert-danger">
+                        Ocorreu um erro
+                    </div>
+                </div>    
+            </div> 
+        {% endif %}   
+
+        {% csrf_token %}
+        
+        <div class="form-content">         
+            <div class="row py-1">
+                <div class="col">
+                    <label for="{{ form.title.id_for_label }}" class="form_label">{{ form.title.label }}: </label>
+                    <div class="input-group">
+                        {{ form.title }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.title.errors }}
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="{{ form.description.id_for_label }}" class="form_label">{{ form.description.label }}: </label>
+                    <div class="input-group">
+                        {{ form.description }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.description.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col">
+                    <label for="{{ form.preparation_time.id_for_label }}" class="form_label">{{ form.preparation_time.label }}: </label>
+                    <div class="input-group">
+                        {{ form.preparation_time }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.preparation_time.errors }}
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="{{ form.preparation_time_unit.id_for_label }}" class="form_label">{{ form.preparation_time_unit.label }}: </label>
+                    <div class="input-group">
+                        {{ form.preparation_time_unit }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.preparation_time_unit.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col">
+                    <label for="{{ form.servings.id_for_label }}" class="form_label">{{ form.servings.label }}: </label>
+                    <div class="input-group">
+                        {{ form.servings }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.servings.errors }}
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="{{ form.servings_unit.id_for_label }}" class="form_label">{{ form.servings_unit.label }}: </label>
+                    <div class="input-group">
+                        {{ form.servings_unit }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.servings_unit.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col">
+                    <label for="{{ form.preparation_steps.id_for_label }}" class="form_label">{{ form.preparation_steps.label }}: </label>
+                    <div class="input-group">
+                        {{ form.preparation_steps }}
+                    </div>
+                    <div class="text-danger">
+                        {{ form.preparation_steps.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col">
+                    <label for="" class="form_label">{{ form.cover.label }}: </label>
+                    <div class="input-group">
+                        {{ form.cover }}
+                    </div>
+                    <div class="input-group  py-3">
+                        <img src="{{ form.cover.value.url }}" alt="Capa para {{ recipe }}" class="img-fluid">
+                    </div>
+                    <div class="text-danger">
+                        {{ form.cover.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+            </div> 
+        </div>     
+    </form>
+</div>

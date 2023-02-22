@@ -6,6 +6,10 @@
         {% csrf_token %}
         <button class="btn btn-link text-decoration-none" type="submit">Clique aqui para fazer logout</button>
     </form>
+    <p>ou</p>
+    <a href="{% url 'authors:dashboard' %}" class="btn btn-link text-decoration-none" type="submit">Veja suas receitas</a>
+    <p>ou</p>
+    <a href="{% url 'authors:dashboard_recipe_new' %}" class="btn btn-link text-decoration-none" type="submit">Crie uma receita</a>
 </div>
 
 {% endif %}
